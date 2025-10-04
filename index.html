@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Exchange System - UI Mockups</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/5.11.5/reset.min.css">
+    <script>
+    function showScreen(index) {
+        // Hide all screens
+        document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.remove('active');
+        });
+        
+        // Show the selected screen
+        document.getElementById('screen-' + index).classList.add('active');
+        
+        // Update navigation buttons
+        document.querySelectorAll('.screen-nav button').forEach((button, i) => {
+            if (i === index) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 25px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #1890ff;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .header-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .screen-nav {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .screen-nav button {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .screen-nav button:hover {
+            border-color: #1890ff;
+            color: #1890ff;
+            transform: translateY(-2px);
+        }
+
+        .screen-nav button.active {
+            background: #1890ff;
+            color: white;
+            border-color: #1890ff;
+        }
+
+        .screen-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Login Screen */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .login-box {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1890ff, #36cfc9);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1890ff;
+            box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1890ff, #36cfc9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(24, 144, 255, 0.4);
+        }
+
+        /* Dashboard Layout */
+        .dashboard-layout {
+            display: flex;
+            height: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #001529;
+            padding: 20px 0;
+            min-height: 600px;
+        }
+
+        .sidebar-logo {
+            padding: 0 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-logo h3 {
+            color: white;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 12px 24px;
+            color: rgba(255,255,255,0.65);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-menu li:hover,
+        .sidebar-menu li.active {
+            background: #1890ff;
+            color: white;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #f0f2f5;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #1890ff;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .stat-card.success {
+            border-left-color: #52c41a;
+        }
+
+        .stat-card.warning {
+            border-left-color: #faad14;
+        }
+
+        .stat-card.danger {
+            border-left-color: #ff4d4f;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .stat-change {
+            font-size: 13px;
+            margin-top: 8px;
+            color: #52c41a;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table thead {
+            background: #fafafa;
+        }
+
+        .table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .table td {
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+        }
+
+        .table tbody tr:hover {
+            background: #fafafa;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #f6ffed;
+            color: #52c41a;
+            border: 1px solid #b7eb8f;
+        }
+
+        .badge-warning {
+            background: #fffbe6;
+            color: #faad14;
+            border: 1px solid #ffe58f;
+        }
+
+        .badge-danger {
+            background: #fff2f0;
+            color: #ff4d4f;
+            border: 1px solid #ffccc7;
+        }
+
+        .badge-info {
+            background: #e6f7ff;
+            color: #1890ff;
+            border: 1px solid #91d5ff;
+        }
+
+        /* Form Elements */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+
+        .btn-success {
+            background: #52c41a;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #73d13d;
+        }
+
+        .btn-danger {
+            background: #ff4d4f;
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 6px 16px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        /* Currency Stock */
+        .stock-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .stock-currency {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .stock-amount {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1890ff;
+        }
+
+        /* Transaction List */
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-info {
+            flex: 1;
+        }
+
+        .transaction-type {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .transaction-time {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .transaction-amount {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .amount-positive {
+            color: #52c41a;
+        }
+
+        .amount-negative {
+            color: #ff4d4f;
+        }
+
+        /* Transfer Card */
+        .transfer-card {
+            background: #fff7e6;
+            border: 2px solid #ffd666;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .transfer-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .transfer-from {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .transfer-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        /* Charts Placeholder */
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #e6f7ff 0%, #f0f5ff 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1890ff;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1890ff, #36cfc9);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .highlight-box .value {
+            font-size: 32px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💱 Money Exchange System</h1>
+            <div class="header-info">
+                <div style="text-align: right;">
+                    <div style="font-size: 14px; color: #666;">Business Presentation</div>
+                    <div style="font-weight: 600; color: #1890ff;">Interactive UI Mockups</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen-nav">
+            <button class="active" onclick="showScreen(0)">1. Login</button>
+            <button onclick="showScreen(1)">2. Dashboard</button>
+            <button onclick="showScreen(2)">3. Buy Currency</button>
+            <button onclick="showScreen(3)">4. Sell Currency</button>
+            <button onclick="showScreen(4)">5. Transfer</button>
+            <button onclick="showScreen(5)">6. Daily Operations</button>
+            <button onclick="showScreen(6)">7. Expenses</button>
+            <button onclick="showScreen(7)">8. Debts</button>
+            <button onclick="showScreen(8)">9. Reports</button>
+            <button onclick="showScreen(9)">10. Super Admin</button>
+        </div>
+
+        <div class="screen-container">
+            <!-- Screen 1: Login -->
+            <div class="screen active" id="screen-0">
+                <div class="login-screen">
+                    <div class="login-box">
+                        <div class="login-logo">💱</div>
+                        <h2 class="login-title">Money Exchange System</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="manager@exchange.com" value="manager@exchange.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-input" placeholder="••••••••" value="password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-primary">Sign In</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="#" style="color: #1890ff; text-decoration: none; font-size: 14px;">Forgot Password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 2: Branch Dashboard -->
+            <div class="screen" id="screen-1">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li class="active">📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li>📈 Reports</li>
+                            <li>⚙️ Settings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Branch Dashboard</h1>
+                            <p class="page-subtitle">Colombo Branch | Manager: John Doe | Today: October 4, 2025</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-label">Opening Balance</div>
+                                <div class="stat-value">LKR 500,000</div>
+                            </div>
+                            
+                            <div class="stat-card success">
+                                <div class="stat-label">Current Balance</div>
+                                <div class="stat-value">LKR 485,340</div>
+                                <div class="stat-change">↓ LKR 14,660 today</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-label">Today's Trades</div>
+                                <div class="stat-value">24</div>
+                                <div class="stat-change">↑ 12% vs yesterday</div>
+                            </div>
+                            
+                            <div class="stat-card warning">
+                                <div class="stat-label">Pending Transfers</div>
+                                <div class="stat-value">3</div>
+                                <div class="stat-change">Requires attention</div>
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Currency Stock</div>
+                                <div class="stock-item">
+                                    <div>
+                                        <div class="stock-currency">USD - US Dollar</div>
+                                        <div style="font-size: 12px; color: #999;">Last updated: 5 mins ago</div>
+                                    </div>
+                                    <div class="stock-amount">5,240</div>
+                                </div>
+                                <div class="stock-item">
+                                    <div>
+                                        <div class="stock-currency">EUR - Euro</div>
+                                        <div style="font-size: 12px; color: #999;">Last updated: 5 mins ago</div>
+                                    </div>
+                                    <div class="stock-amount">3,150</div>
+                                </div>
+                                <div class="stock-item">
+                                    <div>
+                                        <div class="stock-currency">GBP - British Pound</div>
+                                        <div style="font-size: 12px; color: #999;">Last updated: 5 mins ago</div>
+                                    </div>
+                                    <div class="stock-amount">1,890</div>
+                                </div>
+                                <div class="stock-item">
+                                    <div>
+                                        <div class="stock-currency">AUD - Australian Dollar</div>
+                                        <div style="font-size: 12px; color: #999;">Last updated: 5 mins ago</div>
+                                    </div>
+                                    <div class="stock-amount">2,450</div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Recent Transactions</div>
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-type">BUY USD</div>
+                                        <div class="transaction-time">2 minutes ago by John D.</div>
+                                    </div>
+                                    <div class="transaction-amount amount-positive">+100</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-type">SELL EUR</div>
+                                        <div class="transaction-time">15 minutes ago by Sarah M.</div>
+                                    </div>
+                                    <div class="transaction-amount amount-negative">-50</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-type">BUY GBP</div>
+                                        <div class="transaction-time">32 minutes ago by Mike W.</div>
+                                    </div>
+                                    <div class="transaction-amount amount-positive">+75</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="transaction-info">
+                                        <div class="transaction-type">SELL USD</div>
+                                        <div class="transaction-time">1 hour ago by John D.</div>
+                                    </div>
+                                    <div class="transaction-amount amount-negative">-200</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 3: Buy Currency -->
+            <div class="screen" id="screen-2">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li class="active">💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li>📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Buy Currency from Customer</h1>
+                            <p class="page-subtitle">Customer gives us currency, we give LKR</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h3>Available LKR Balance</h3>
+                            <div class="value">LKR 485,340</div>
+                        </div>
+
+                        <div class="card" style="max-width: 800px;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Currency Type *</label>
+                                    <input type="text" class="form-input" placeholder="Select currency" value="USD - US Dollar">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Amount *</label>
+                                    <input type="number" class="form-input" placeholder="0.00" value="100">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Current Exchange Rate *</label>
+                                    <input type="number" class="form-input" placeholder="0.00" value="325.50">
+                                    <div style="font-size: 12px; color: #52c41a; margin-top: 4px;">✓ Rate is current (updated 5 mins ago)</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">LKR to Pay</label>
+                                    <input type="text" class="form-input" value="LKR 32,550.00" readonly style="background: #e6f7ff; font-weight: 600; font-size: 16px; color: #1890ff;">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Customer Name (Optional)</label>
+                                <input type="text" class="form-input" placeholder="Enter customer name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Customer Phone (Optional)</label>
+                                <input type="tel" class="form-input" placeholder="+94 77 123 4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-input" rows="3" placeholder="Add any additional notes..."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" style="flex: 1;">Cancel</button>
+                                <button class="btn btn-success" style="flex: 2;">Complete Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 4: Sell Currency -->
+            <div class="screen" id="screen-3">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li class="active">💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li>📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Sell Currency to Customer</h1>
+                            <p class="page-subtitle">We give currency to customer, customer pays LKR</p>
+                        </div>
+
+                        <div style="background: #fffbe6; border: 2px solid #ffd666; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                            <strong>Available Stock:</strong> USD: 5,240 | EUR: 3,150 | GBP: 1,890 | AUD: 2,450
+                        </div>
+
+                        <div class="card" style="max-width: 800px;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Currency Type *</label>
+                                    <input type="text" class="form-input" placeholder="Select currency" value="EUR - Euro">
+                                    <div style="font-size: 12px; color: #52c41a; margin-top: 4px;">✓ Available: 3,150 EUR</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Amount *</label>
+                                    <input type="number" class="form-input" placeholder="0.00" value="50">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Current Exchange Rate *</label>
+                                    <input type="number" class="form-input" placeholder="0.00" value="365.80">
+                                    <div style="font-size: 12px; color: #52c41a; margin-top: 4px;">✓ Rate is current (updated 3 mins ago)</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">LKR to Receive</label>
+                                    <input type="text" class="form-input" value="LKR 18,290.00" readonly style="background: #f6ffed; font-weight: 600; font-size: 16px; color: #52c41a;">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Customer Name (Optional)</label>
+                                <input type="text" class="form-input" placeholder="Enter customer name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Customer Phone (Optional)</label>
+                                <input type="tel" class="form-input" placeholder="+94 77 123 4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-input" rows="3" placeholder="Add any additional notes..."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" style="flex: 1;">Cancel</button>
+                                <button class="btn btn-primary" style="flex: 2;">Complete Sale</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 5: Inter-Branch Transfer -->
+            <div class="screen" id="screen-4">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li class="active">🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li>📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Inter-Branch Transfer</h1>
+                            <p class="page-subtitle">Send and receive currency/money between branches</p>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Send Transfer</div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Transfer Type *</label>
+                                    <input type="text" class="form-input" value="Currency Transfer">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">To Branch *</label>
+                                    <input type="text" class="form-input" value="Kandy Branch">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Currency *</label>
+                                    <input type="text" class="form-input" value="USD - US Dollar">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Quantity *</label>
+                                    <input type="number" class="form-input" value="500">
+                                    <div style="font-size: 12px; color: #52c41a; margin-top: 4px;">✓ Available: 5,240 USD</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Notes</label>
+                                    <textarea class="form-input" rows="2" placeholder="Purpose of transfer..."></textarea>
+                                </div>
+
+                                <button class="btn btn-primary">Initiate Transfer</button>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Pending Incoming Transfers</div>
+                                
+                                <div class="transfer-card">
+                                    <div class="transfer-header">
+                                        <div>
+                                            <div class="transfer-from">From: Kandy Branch</div>
+                                            <div style="font-size: 12px; color: #666;">2 hours ago</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-weight: 600; font-size: 14px;">USD</div>
+                                            <div style="font-size: 20px; font-weight: 600; color: #faad14;">500</div>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 13px; color: #666; margin-bottom: 8px;">
+                                        Transfer #TRF-2025-001234
+                                    </div>
+                                    <div class="transfer-actions">
+                                        <button class="btn btn-success btn-sm" style="flex: 1;">Accept</button>
+                                        <button class="btn btn-danger btn-sm" style="flex: 1;">Reject</button>
+                                    </div>
+                                </div>
+
+                                <div class="transfer-card">
+                                    <div class="transfer-header">
+                                        <div>
+                                            <div class="transfer-from">From: Galle Branch</div>
+                                            <div style="font-size: 12px; color: #666;">5 hours ago</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-weight: 600; font-size: 14px;">LKR</div>
+                                            <div style="font-size: 20px; font-weight: 600; color: #faad14;">50,000</div>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 13px; color: #666; margin-bottom: 8px;">
+                                        Transfer #TRF-2025-001229
+                                    </div>
+                                    <div class="transfer-actions">
+                                        <button class="btn btn-success btn-sm" style="flex: 1;">Accept</button>
+                                        <button class="btn btn-danger btn-sm" style="flex: 1;">Reject</button>
+                                    </div>
+                                </div>
+
+                                <div class="transfer-card">
+                                    <div class="transfer-header">
+                                        <div>
+                                            <div class="transfer-from">From: Negombo Branch</div>
+                                            <div style="font-size: 12px; color: #666;">1 day ago</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-weight: 600; font-size: 14px;">EUR</div>
+                                            <div style="font-size: 20px; font-weight: 600; color: #faad14;">200</div>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 13px; color: #666; margin-bottom: 8px;">
+                                        Transfer #TRF-2025-001198
+                                    </div>
+                                    <div class="transfer-actions">
+                                        <button class="btn btn-success btn-sm" style="flex: 1;">Accept</button>
+                                        <button class="btn btn-danger btn-sm" style="flex: 1;">Reject</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 6: Daily Operations -->
+            <div class="screen" id="screen-5">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li class="active">📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li>📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Daily Operations</h1>
+                            <p class="page-subtitle">October 4, 2025 - Colombo Branch</p>
+                        </div>
+
+                        <div class="card" style="max-width: 900px; margin: 0 auto;">
+                            <div style="background: #e6f7ff; border: 2px solid #91d5ff; padding: 24px; border-radius: 8px; margin-bottom: 24px;">
+                                <h3 style="margin: 0 0 16px 0; color: #1890ff;">Day Status: OPENED</h3>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div>
+                                        <div style="font-size: 13px; color: #666;">Opened By</div>
+                                        <div style="font-weight: 600;">John Doe</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 13px; color: #666;">Opened At</div>
+                                        <div style="font-weight: 600;">08:30 AM</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-header">Daily Summary</div>
+                            
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 600;">Opening Balance</td>
+                                        <td style="text-align: right; font-size: 16px; font-weight: 600;">LKR 500,000</td>
+                                    </tr>
+                                    <tr style="background: #fff2f0;">
+                                        <td style="font-weight: 600; color: #ff4d4f;">Currency Purchases (LKR Paid)</td>
+                                        <td style="text-align: right; font-size: 16px; font-weight: 600; color: #ff4d4f;">- LKR 45,000</td>
+                                    </tr>
+                                    <tr style="background: #f6ffed;">
+                                        <td style="font-weight: 600; color: #52c41a;">Currency Sales (LKR Received)</td>
+                                        <td style="text-align: right; font-size: 16px; font-weight: 600; color: #52c41a;">+ LKR 65,400</td>
+                                    </tr>
+                                    <tr style="background: #fff2f0;">
+                                        <td style="font-weight: 600; color: #ff4d4f;">Total Expenses</td>
+                                        <td style="text-align: right; font-size: 16px; font-weight: 600; color: #ff4d4f;">- LKR 12,060</td>
+                                    </tr>
+                                    <tr style="background: #e6f7ff;">
+                                        <td style="font-weight: 600; font-size: 16px; color: #1890ff;">Current Balance</td>
+                                        <td style="text-align: right; font-size: 20px; font-weight: 600; color: #1890ff;">LKR 508,340</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="margin-top: 30px; padding: 24px; background: #fffbe6; border: 2px solid #ffd666; border-radius: 8px;">
+                                <h3 style="margin: 0 0 16px 0; color: #d48806;">Close Trading Day</h3>
+                                <p style="margin: 0 0 16px 0; color: #666;">Review the day's summary and close the trading day. Once closed, no more transactions can be recorded.</p>
+                                <div style="display: flex; gap: 12px;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 13px; color: #666; margin-bottom: 4px;">Expected Closing Balance</div>
+                                        <div style="font-size: 20px; font-weight: 600; color: #faad14;">LKR 508,340</div>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label class="form-label">Actual Cash Count</label>
+                                        <input type="number" class="form-input" value="508340" placeholder="Count physical cash">
+                                    </div>
+                                </div>
+                                <button class="btn" style="margin-top: 16px; width: 100%; background: #faad14; color: white;">Close Day & Generate Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 7: Expense Management -->
+            <div class="screen" id="screen-6">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li class="active">💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li>📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Expense Management</h1>
+                            <p class="page-subtitle">Track daily operational expenses</p>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Add Expense</div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Category *</label>
+                                    <input type="text" class="form-input" value="Utilities">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Amount (LKR) *</label>
+                                    <input type="number" class="form-input" value="3500">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-input" rows="3" placeholder="Electricity bill for October">Electricity bill for October</textarea>
+                                </div>
+
+                                <button class="btn btn-danger">Add Expense</button>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Today's Expenses</div>
+                                
+                                <div style="border-left: 4px solid #ff4d4f; padding: 12px; background: #fff2f0; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">Food</div>
+                                            <div style="font-size: 12px; color: #666;">10:30 AM</div>
+                                        </div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #ff4d4f;">LKR 5,000</div>
+                                    </div>
+                                </div>
+
+                                <div style="border-left: 4px solid #ff4d4f; padding: 12px; background: #fff2f0; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">Electricity</div>
+                                            <div style="font-size: 12px; color: #666;">11:15 AM</div>
+                                        </div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #ff4d4f;">LKR 3,500</div>
+                                    </div>
+                                </div>
+
+                                <div style="border-left: 4px solid #ff4d4f; padding: 12px; background: #fff2f0; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">Wi-Fi</div>
+                                            <div style="font-size: 12px; color: #666;">02:00 PM</div>
+                                        </div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #ff4d4f;">LKR 2,560</div>
+                                    </div>
+                                </div>
+
+                                <div style="border-left: 4px solid #ff4d4f; padding: 12px; background: #fff2f0; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">Miscellaneous</div>
+                                            <div style="font-size: 12px; color: #666;">03:45 PM</div>
+                                        </div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #ff4d4f;">LKR 1,000</div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 16px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-weight: 600;">Total Expenses Today</span>
+                                        <span style="font-size: 20px; font-weight: 600; color: #ff4d4f;">LKR 12,060</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 8: Debt Management -->
+            <div class="screen" id="screen-7">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li class="active">📋 Debts</li>
+                            <li>📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Debt Management</h1>
+                            <p class="page-subtitle">Track currency and money debts</p>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Record New Debt</div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Debt Type *</label>
+                                    <input type="text" class="form-input" value="Currency Debt">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Customer Name *</label>
+                                    <input type="text" class="form-input" placeholder="Enter customer name">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Currency *</label>
+                                        <input type="text" class="form-input" value="USD">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Amount *</label>
+                                        <input type="number" class="form-input" placeholder="0.00">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Due Date *</label>
+                                    <input type="date" class="form-input" value="2025-10-15">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Contact Number</label>
+                                    <input type="tel" class="form-input" placeholder="+94 77 123 4567">
+                                </div>
+
+                                <button class="btn" style="background: #faad14; color: white;">Record Debt</button>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Outstanding Debts</div>
+                                
+                                <div style="border: 2px solid #ffccc7; background: #fff2f0; padding: 16px; border-radius: 8px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">David Perera</div>
+                                            <div style="font-size: 12px; color: #666;">Due: Oct 5, 2025</div>
+                                            <div style="font-size: 12px; font-weight: 600; color: #ff4d4f; margin-top: 4px;">OVERDUE</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 14px; font-weight: 600;">EUR</div>
+                                            <div style="font-size: 20px; font-weight: 600; color: #ff4d4f;">150</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success btn-sm" style="width: 100%;">Mark as Paid</button>
+                                </div>
+
+                                <div style="border: 2px solid #ffe58f; background: #fffbe6; padding: 16px; border-radius: 8px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">John Silva</div>
+                                            <div style="font-size: 12px; color: #666;">Due: Oct 10, 2025</div>
+                                            <div style="font-size: 12px; font-weight: 600; color: #faad14; margin-top: 4px;">DUE SOON</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 14px; font-weight: 600;">USD</div>
+                                            <div style="font-size: 20px; font-weight: 600; color: #faad14;">200</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success btn-sm" style="width: 100%;">Mark as Paid</button>
+                                </div>
+
+                                <div style="border: 2px solid #d9d9d9; background: #fafafa; padding: 16px; border-radius: 8px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <div>
+                                            <div style="font-weight: 600; color: #333;">Mary Fernando</div>
+                                            <div style="font-size: 12px; color: #666;">Due: Oct 15, 2025</div>
+                                            <div style="font-size: 12px; font-weight: 600; color: #52c41a; margin-top: 4px;">ACTIVE</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 14px; font-weight: 600;">LKR</div>
+                                            <div style="font-size: 20px; font-weight: 600;">25,000</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success btn-sm" style="width: 100%;">Mark as Paid</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 9: Reports -->
+            <div class="screen" id="screen-8">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li>📊 Dashboard</li>
+                            <li>💰 Buy Currency</li>
+                            <li>💵 Sell Currency</li>
+                            <li>🔄 Transfers</li>
+                            <li>📅 Daily Operations</li>
+                            <li>💳 Expenses</li>
+                            <li>📋 Debts</li>
+                            <li class="active">📈 Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                                <div>
+                                    <h1 class="page-title">Reports & Analytics</h1>
+                                    <p class="page-subtitle">Generate and export detailed reports</p>
+                                </div>
+                                <div style="display: flex; gap: 12px;">
+                                    <button class="btn btn-secondary btn-sm">Export PDF</button>
+                                    <button class="btn btn-success btn-sm">Export Excel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                                <div class="form-group">
+                                    <label class="form-label">From Date</label>
+                                    <input type="date" class="form-input" value="2025-10-01">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">To Date</label>
+                                    <input type="date" class="form-input" value="2025-10-04">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Report Type</label>
+                                    <input type="text" class="form-input" value="Daily Trading Report">
+                                </div>
+                                <div class="form-group" style="display: flex; align-items: flex-end;">
+                                    <button class="btn btn-primary" style="width: 100%;">Generate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div class="stat-card">
+                                <div class="stat-label">Total Trades</div>
+                                <div class="stat-value">147</div>
+                                <div class="stat-change">↑ 12% from last week</div>
+                            </div>
+                            
+                            <div class="stat-card success">
+                                <div class="stat-label">Total Revenue</div>
+                                <div class="stat-value" style="font-size: 24px;">LKR 2.4M</div>
+                                <div class="stat-change">↑ 8% from last week</div>
+                            </div>
+                            
+                            <div class="stat-card warning">
+                                <div class="stat-label">Net Profit</div>
+                                <div class="stat-value" style="font-size: 24px;">LKR 340K</div>
+                                <div class="stat-change" style="color: #ff4d4f;">↓ 3% from last week</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Trade History</div>
+                            <div style="overflow-x: auto;">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Currency</th>
+                                            <th>Amount</th>
+                                            <th>Rate</th>
+                                            <th>LKR</th>
+                                            <th>User</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Oct 4, 10:30</td>
+                                            <td><span class="badge badge-success">BUY</span></td>
+                                            <td><strong>USD</strong></td>
+                                            <td>100</td>
+                                            <td>325.00</td>
+                                            <td><strong>32,500</strong></td>
+                                            <td>John D.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oct 4, 09:45</td>
+                                            <td><span class="badge badge-info">SELL</span></td>
+                                            <td><strong>EUR</strong></td>
+                                            <td>50</td>
+                                            <td>365.80</td>
+                                            <td><strong>18,290</strong></td>
+                                            <td>Sarah M.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oct 4, 09:15</td>
+                                            <td><span class="badge badge-success">BUY</span></td>
+                                            <td><strong>GBP</strong></td>
+                                            <td>75</td>
+                                            <td>410.20</td>
+                                            <td><strong>30,765</strong></td>
+                                            <td>Mike W.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 10: Super Admin Dashboard -->
+            <div class="screen" id="screen-9">
+                <div class="dashboard-layout">
+                    <div class="sidebar">
+                        <div class="sidebar-logo">
+                            <h3>💱 Exchange</h3>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li class="active">📊 Overview</li>
+                            <li>🏢 Branches</li>
+                            <li>👥 Users</li>
+                            <li>💱 Currencies</li>
+                            <li>📈 Analytics</li>
+                            <li>📊 Reports</li>
+                            <li>🔐 Roles & Permissions</li>
+                            <li>⚙️ System Settings</li>
+                            <li>📋 Audit Logs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="page-header">
+                            <h1 class="page-title">Super Admin Dashboard</h1>
+                            <p class="page-subtitle">Company-wide Overview | All Branches</p>
+                        </div>
+
+                        <div class="stats-grid" style="grid-template-columns: repeat(5, 1fr);">
+                            <div class="stat-card" style="border-left-color: #722ed1;">
+                                <div class="stat-label">Total Branches</div>
+                                <div class="stat-value">8</div>
+                            </div>
+                            
+                            <div class="stat-card success">
+                                <div class="stat-label">Active Users</div>
+                                <div class="stat-value">42</div>
+                            </div>
+                            
+                            <div class="stat-card" style="border-left-color: #eb2f96;">
+                                <div class="stat-label">Today's Trades</div>
+                                <div class="stat-value">284</div>
+                            </div>
+                            
+                            <div class="stat-card warning">
+                                <div class="stat-label">Total LKR Balance</div>
+                                <div class="stat-value" style="font-size: 24px;">8.4M</div>
+                            </div>
+                            
+                            <div class="stat-card danger">
+                                <div class="stat-label">Outstanding Debts</div>
+                                <div class="stat-value" style="font-size: 24px;">340K</div>
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Branch Performance</div>
+                                
+                                <div style="padding: 12px; background: #f6ffed; border-left: 4px solid #52c41a; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <div style="font-weight: 600;">Colombo</div>
+                                        <span class="badge badge-success">Excellent</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 13px; color: #666;">
+                                        <span>87 trades</span>
+                                        <span style="font-weight: 600;">LKR 2.1M</span>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 12px; background: #e6f7ff; border-left: 4px solid #1890ff; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <div style="font-weight: 600;">Kandy</div>
+                                        <span class="badge badge-info">Good</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 13px; color: #666;">
+                                        <span>64 trades</span>
+                                        <span style="font-weight: 600;">LKR 1.5M</span>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 12px; background: #e6f7ff; border-left: 4px solid #1890ff; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <div style="font-weight: 600;">Galle</div>
+                                        <span class="badge badge-info">Good</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 13px; color: #666;">
+                                        <span>52 trades</span>
+                                        <span style="font-weight: 600;">LKR 1.2M</span>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 12px; background: #fffbe6; border-left: 4px solid #faad14; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <div style="font-weight: 600;">Negombo</div>
+                                        <span class="badge badge-warning">Average</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 13px; color: #666;">
+                                        <span>43 trades</span>
+                                        <span style="font-weight: 600;">LKR 980K</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Total Currency Stock</div>
+                                
+                                <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="font-weight: 600; font-size: 18px; font-family: monospace;">USD</div>
+                                            <div style="font-size: 12px; color: #666;">Stock: 42,340</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-weight: 600; color: #52c41a;">LKR 13.8M</div>
+                                            <div style="font-size: 12px; color: #666;">Total Value</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="font-weight: 600; font-size: 18px; font-family: monospace;">EUR</div>
+                                            <div style="font-size: 12px; color: #666;">Stock: 28,150</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-weight: 600; color: #52c41a;">LKR 10.2M</div>
+                                            <div style="font-size: 12px; color: #666;">Total Value</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="font-weight: 600; font-size: 18px; font-family: monospace;">GBP</div>
+                                            <div style="font-size: 12px; color: #666;">Stock: 15,890</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-weight: 600; color: #52c41a;">LKR 7.4M</div>
+                                            <div style="font-size: 12px; color: #666;">Total Value</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">Recent Activity Across All Branches</div>
+                            
+                            <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Colombo</div>
+                                    <div style="font-size: 13px; color: #666;">Currency Buy: USD 500</div>
+                                </div>
+                                <div style="font-size: 12px; color: #999;">2m ago</div>
+                            </div>
+
+                            <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Kandy</div>
+                                    <div style="font-size: 13px; color: #666;">Transfer Sent: To Galle - EUR 200</div>
+                                </div>
+                                <div style="font-size: 12px; color: #999;">15m ago</div>
+                            </div>
+
+                            <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Galle</div>
+                                    <div style="font-size: 13px; color: #666;">Currency Sell: GBP 300</div>
+                                </div>
+                                <div style="font-size: 12px; color: #999;">23m ago</div>
+                            </div>
+
+                            <div style="padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: #333;">Negombo</div>
+                                    <div style="font-size: 13px; color: #666;">Expense Added: Electricity - LKR 5,000</div>
+                                </div>
+                                <div style="font-size: 12px; color: #999;">1h ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
